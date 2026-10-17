@@ -1,13 +1,13 @@
 # Claude Code History Guard
 
+![Claude Code History Guard with the Clawd mascot: switch accounts and keep your Code history](docs/assets/promo-clawd.png)
+
 **Local backups and add-only account sync for Claude Code Desktop on Windows.**
 
 Keep local Code conversations recoverable when switching accounts. Preview what
 would be copied, verify a recovery snapshot, then add only missing session files.
 Existing conversations, scheduled tasks and group settings are never replaced by
 the sync engine.
-
-![Claude Code History Guard: preview, verify, preserve](docs/assets/banner.svg)
 
 [Español](README.es.md) · [Quick start](#quick-start) · [Safety model](docs/safety.md) ·
 [FAQ](#frequently-asked-questions) · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)

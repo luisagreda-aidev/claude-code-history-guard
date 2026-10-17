@@ -12,6 +12,7 @@
     "CONTRIBUTING.md",
     "Control-ClaudeHistoryAutomatic.ps1",
     "docs/assets/banner.svg",
+    "docs/assets/promo-clawd.png",
     "docs/safety.md",
     "docs/testing.md",
     "docs/usage.md",
@@ -38,5 +39,12 @@
     "tools/public-files.json",
     "Verify-IncrementalHistoryIndependent.cjs",
     "Verify-RecoveryIndependent.cjs"
-  ]
+  ],
+  "reviewedPngAssets": {
+    "docs/assets/promo-clawd.png": {
+      "sha256": "3f73faa19bb55f703915f1d577ef32995d7503edc3c36594780dd3125390944a",
+      "width": 1672,
+      "height": 941
+    }
+  }
 }

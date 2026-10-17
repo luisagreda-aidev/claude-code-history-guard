@@ -1,5 +1,5 @@
 // Fail closed on unexpected files and likely secrets. Never prints matched values.
-const fs=require('fs'),path=require('path'),cp=require('child_process');
+const fs=require('fs'),path=require('path'),cp=require('child_process'),crypto=require('crypto');
 const root=path.resolve(__dirname,'..');
 const policy=JSON.parse(fs.readFileSync(path.join(__dirname,'public-files.json'),'utf8'));
 const allowed=new Set(policy.files);
@@ -13,6 +13,22 @@ const allowedEmails=new Set(['history-guard@users.noreply.github.com']);
 const syntheticIds=new Set(['123e4567-e89b-12d3-a456-426614174000']);
 const uuid=/\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/gi;
 function check(bytes,label){
+ const png=policy.reviewedPngAssets?.[label];
+ if(png){
+  const signature=Buffer.from([137,80,78,71,13,10,26,10]);
+  if(bytes.length>2*1024*1024||!bytes.subarray(0,8).equals(signature)||crypto.createHash('sha256').update(bytes).digest('hex')!==png.sha256)throw Error('Unreviewed PNG content: '+label);
+  let offset=8,types=[];
+  while(offset<bytes.length){
+   if(offset+12>bytes.length)throw Error('Invalid PNG structure: '+label);
+   const length=bytes.readUInt32BE(offset),end=offset+12+length,type=bytes.toString('ascii',offset+4,offset+8);
+   if(end>bytes.length||!['IHDR','IDAT','IEND'].includes(type))throw Error('PNG metadata or invalid chunk refused: '+label);
+   if(type==='IHDR'&&(offset!==8||length!==13||bytes.readUInt32BE(offset+8)!==png.width||bytes.readUInt32BE(offset+12)!==png.height))throw Error('Unexpected PNG dimensions: '+label);
+   if(type==='IEND'&&(length!==0||end!==bytes.length))throw Error('Invalid PNG ending: '+label);
+   types.push(type);offset=end;
+  }
+  if(types[0]!=='IHDR'||types.at(-1)!=='IEND'||types.filter(t=>t==='IHDR').length!==1||!types.includes('IDAT'))throw Error('Incomplete PNG: '+label);
+  return;
+ }
  if(bytes.length>2*1024*1024||bytes.includes(0))throw Error('Non-text or oversized content: '+label);
  const text=new TextDecoder('utf-8',{fatal:true}).decode(bytes);
  for(const [kind,re]of patterns){const matches=text.match(new RegExp(re.source,re.flags+'g'))||[];for(const m of matches){if(kind==='email-address'&&allowedEmails.has(m))continue;throw Error(kind+' detected in '+label+' (value suppressed)');}}
@@ -31,7 +47,7 @@ try{
  for(const file of files){if(!allowed.has(file))throw Error('Unexpected file: '+file);check(fs.readFileSync(path.join(root,file)),file);}
  if(process.argv.includes('--git-history')){
   const objects=cp.execFileSync('git',['rev-list','--objects','--all'],{cwd:root,encoding:'utf8'}).trim().split('\n');
-  for(const entry of objects){const [oid,...parts]=entry.split(' ');if(!oid)continue;const type=cp.execFileSync('git',['cat-file','-t',oid],{cwd:root,encoding:'utf8'}).trim();if(type==='blob'){const file=parts.join(' ');if(!allowed.has(file))throw Error('Unexpected historical path');check(cp.execFileSync('git',['cat-file','blob',oid],{cwd:root}),'historical blob');}}
+  for(const entry of objects){const [oid,...parts]=entry.split(' ');if(!oid)continue;const type=cp.execFileSync('git',['cat-file','-t',oid],{cwd:root,encoding:'utf8'}).trim();if(type==='blob'){const file=parts.join(' ');if(!allowed.has(file))throw Error('Unexpected historical path');check(cp.execFileSync('git',['cat-file','blob',oid],{cwd:root,maxBuffer:4*1024*1024}),file);}}
   const commits=cp.execFileSync('git',['log','--all','--format=%B%n%an <%ae>%n%cn <%ce>'],{cwd:root});check(commits,'commit metadata');
  }
  process.stdout.write(JSON.stringify({publicTreeAudit:'passed',files:files.length,historyAudited:process.argv.includes('--git-history')})+'\n');

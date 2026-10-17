@@ -21,6 +21,7 @@
 **/*.lnk
 **/*.zip
 **/*.png
+!/docs/assets/promo-clawd.png
 **/*.jpg
 **/*.jpeg
 .env

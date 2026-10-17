@@ -1,5 +1,7 @@
 # Claude Code History Guard
 
+![Claude Code History Guard con la mascota Clawd: cambia de cuenta y conserva tu historial de Code](docs/assets/promo-clawd.png)
+
 **Respaldos locales y copia de conversaciones de Claude Code Desktop entre cuentas en Windows.**
 
 [English](README.md) · [Uso y recuperación](docs/usage.md) · [Modelo de seguridad](docs/safety.md)
