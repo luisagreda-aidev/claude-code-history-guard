@@ -1,0 +1,29 @@
+# Claude Code History Guard
+
+> Independent Windows PowerShell toolkit for local Claude Code Desktop history
+> backups and missing-only session metadata copies between explicit account scopes.
+
+Experimental, local-only and offline for publication. Not an Anthropic product,
+cloud chat migration tool, credential manager or zero-data-loss guarantee.
+
+## Start here
+
+- [Overview and quick start](README.md): requirements, commands and account-switch workflow.
+- [Guía en español](README.es.md): introducción, privacidad y uso.
+- [Safety model](docs/safety.md): protected files, snapshot coverage and failure boundaries.
+- [Usage and recovery](docs/usage.md): optional helper, event states and separate-folder restore.
+- [Testing](docs/testing.md): generated fixtures, process mocks and reproducible validation.
+- [Contributing](CONTRIBUTING.md): change and privacy requirements.
+- [Security](SECURITY.md): private vulnerability reporting without real history.
+- [Agent instructions](AGENTS.md): repository-specific implementation constraints.
+
+## Important facts
+
+- Preview is read-only; Apply requires a fully closed Desktop app.
+- Existing conversations are never replaced by the sync engine.
+- Task definitions, group settings, credentials and Claude configuration are not write targets.
+- Automatic operation shares new names; preexisting names are excluded by default.
+- Source metadata and transcript versions must match a verified automatic snapshot.
+- Local configuration, logs and backups do not belong in this repository.
+- Account switching in a running app is not intercepted. A full restart may be needed.
+- Fixture tests do not establish compatibility with every Desktop release.

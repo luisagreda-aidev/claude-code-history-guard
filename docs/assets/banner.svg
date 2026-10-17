@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340" role="img" aria-labelledby="title desc">
+  <title id="title">Claude Code History Guard</title>
+  <desc id="desc">Local backups and add-only sync. Preview, verify, preserve. Windows and PowerShell.</desc>
+  <rect width="1200" height="340" rx="24" fill="#161b22"/>
+  <path d="M95 76 158 100v61c0 49-32 77-63 91-31-14-63-42-63-91v-61z" fill="#da9772"/>
+  <path d="m65 160 21 22 42-48" fill="none" stroke="#161b22" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="206" y="112" fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="47" font-weight="700">Claude Code History Guard</text>
+  <text x="208" y="158" fill="#b7c1cc" font-family="Segoe UI,Arial,sans-serif" font-size="25">Local backups. Add-only account sync.</text>
+  <rect x="208" y="210" width="212" height="54" rx="10" fill="#27323e"/>
+  <rect x="464" y="210" width="212" height="54" rx="10" fill="#27323e"/>
+  <rect x="720" y="210" width="212" height="54" rx="10" fill="#27323e"/>
+  <g fill="#f0f6fc" font-family="Segoe UI,Arial,sans-serif" font-size="23" text-anchor="middle"><text x="314" y="245">1. Preview</text><text x="570" y="245">2. Verify</text><text x="826" y="245">3. Preserve</text></g>
+  <g stroke="#da9772" stroke-width="3" fill="none"><path d="M430 237h24m-8-7 8 7-8 7"/><path d="M686 237h24m-8-7 8 7-8 7"/></g>
+  <text x="1115" y="307" fill="#8b949e" font-family="Segoe UI,Arial,sans-serif" font-size="17" text-anchor="end">Windows · PowerShell · Local-first</text>
+</svg>

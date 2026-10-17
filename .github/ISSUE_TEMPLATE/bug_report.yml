@@ -1,0 +1,33 @@
+name: Privacy-safe bug report
+description: Report a reproducible problem using synthetic data only.
+body:
+  - type: markdown
+    attributes:
+      value: Do not attach conversations, account IDs, credentials, backups, screenshots of history, or raw logs. Report vulnerabilities privately using SECURITY.md.
+  - type: input
+    id: runtime
+    attributes:
+      label: Windows and PowerShell versions
+      placeholder: Windows 11, PowerShell 7.x
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps with generated fixture data
+      description: Describe a minimal reproduction without real account identifiers or paths.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and observed behavior
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: This report contains no real conversations, account identifiers, secrets or private logs.
+          required: true
