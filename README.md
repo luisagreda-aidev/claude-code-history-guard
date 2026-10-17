@@ -198,6 +198,12 @@ For documentation tools and coding assistants, [llms.txt](llms.txt) provides a
 compact documentation index. It is a navigation aid, not a promise of search or
 model inclusion.
 
+## License
+
+Released under the [MIT License](LICENSE). You may use, modify and redistribute
+the software, including commercially, while keeping its copyright and license
+notice. It is provided without warranty; see LICENSE for the complete terms.
+
 Claude and Claude Code are trademarks of Anthropic. This project is not affiliated
 with, endorsed by, or supported by Anthropic. Related community work:
 [claude-desktop-session-sync](https://github.com/RasmusKD/claude-desktop-session-sync).

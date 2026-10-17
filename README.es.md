@@ -107,5 +107,11 @@ Puedes ejecutar la suite completa con `./Run-Tests.ps1 -Tier Full -RandomTrials 
 Consulta [las pruebas](docs/testing.md) y [cómo contribuir](CONTRIBUTING.md).
 Si te resulta útil, una estrella ayuda a que otras personas encuentren el proyecto.
 
+## Licencia
+
+Publicado bajo la [licencia MIT](LICENSE). Puedes usar, modificar y redistribuir
+el software, incluso comercialmente, conservando el aviso de copyright y la
+licencia. Se entrega sin garantía; consulta LICENSE para los términos completos.
+
 Claude y Claude Code son marcas de Anthropic. Este proyecto no está afiliado,
 avalado ni soportado por Anthropic.
