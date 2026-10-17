@@ -12,8 +12,6 @@ the sync engine.
 [Español](README.es.md) · [Quick start](#quick-start) · [Safety model](docs/safety.md) ·
 [FAQ](#frequently-asked-questions) · [Contributing](CONTRIBUTING.md) · [MIT license](LICENSE)
 
-[![Tests](https://github.com/luisagreda-aidev/claude-code-history-guard/actions/workflows/tests.yml/badge.svg)](https://github.com/luisagreda-aidev/claude-code-history-guard/actions/workflows/tests.yml)
-
 > **Independent, experimental software.** Windows only. Fully quit Claude before
 > copying. This is local Claude **Code** history, not a transfer of Claude web
 > chats or an official Anthropic account migration feature. Backups reduce risk;
@@ -182,9 +180,10 @@ node ./tools/check-public-tree.cjs
 Tests cover malformed metadata, conflicts, missing transcripts, process guards,
 concurrent publication, interrupted runs, deduplicated backup versions and
 independent SHA-256 recovery verification. All fixture data is generated at run
-time. Local results and machine paths are ignored by Git. Public CI exercises
-both PowerShell editions on Windows; it does not prove compatibility with every
-Desktop release. [Testing details](docs/testing.md).
+time. Local results and machine paths are ignored by Git. The included CI workflow
+targets both PowerShell editions on Windows when Actions is enabled. Its presence
+is not a claim of remote validation or compatibility with every Desktop release.
+[Testing details](docs/testing.md).
 
 ## Help improve it
 
